@@ -15,3 +15,5 @@ iCLOUD_PATH = os.path.join(USERPROFILE, 'iCloudDrive') if os.name == 'nt' else "
 iCLOUD_REPORTING_PATH = os.path.join(iCLOUD_PATH, 'Documents', '2 Areas ♾️', '💼 Reportings')
 
 SHARED_RESOURCE_FOLDER = 'G:/My Drive/Surgical/3 Resources 📚' if os.name == 'nt' else 'not set'
+
+iCLOUD_DRIVE = 
