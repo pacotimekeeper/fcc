@@ -9,7 +9,7 @@ import numpy as np
 def dms_report():
     SUPPORTING_FILES_PATH = os.path.join(iCLOUD_REPORTING_PATH, 'Medtronic DMS Report', 'supporting_files')
     
-    mapping_file = joinpath(SUPPORTING_FILES_PATH, 'mappings.xlsx')
+    mapping_file = joinpath(SUPPORTING_FILES_PATH, 'cwl_mappings.xlsx')
 
     ## copy mapping file (Shared G drive) 3 Resources 📚 to 
     src_file = joinpath(SHARED_RESOURCE_FOLDER, 'mappings', 'cwl_mappings(master).xlsx')
