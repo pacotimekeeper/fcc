@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import subprocess
 
+# icloudPath
 dst = r'C:\Users\Paco\Documents\FCC\2 Areas ♾️\💼 Inventory MGMT\cwl_tenders'
 dstPath = r'C:\Users\Paco\Documents\FCC\2 Areas ♾️\💼 Inventory MGMT'
 file = joinpath(dstPath, "cwl_tenders.xlsx")
