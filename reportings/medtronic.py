@@ -7,15 +7,17 @@ import pandas as pd
 import numpy as np
 
 def dms_report():
-    mapping_file = joinpath(SHARED_RESOURCE_FOLDER, 'mappings.xlsx')
-    cp(joinpath(SHARED_RESOURCE_FOLDER, 'mappings', 'cwl_mappings(master).xlsx'), mapping_file)
     SUPPORTING_FILES_PATH = os.path.join(iCLOUD_REPORTING_PATH, 'Medtronic DMS Report', 'supporting_files')
+    
+    mapping_file = joinpath(SUPPORTING_FILES_PATH, 'mappings.xlsx')
+
+    ## copy mapping file (Shared G drive) 3 Resources 📚 to 
+    src_file = joinpath(SHARED_RESOURCE_FOLDER, 'mappings', 'cwl_mappings(master).xlsx')
+    cp(src_file, mapping_file)
+
     sales_report_file = [os.path.join(SUPPORTING_FILES_PATH, fname) for fname in os.listdir(SUPPORTING_FILES_PATH) if 'sales report' in fname.lower()][0]
     df = pd.read_excel(sales_report_file)
     mappings = pd.read_excel(mapping_file)
-
-    # print(mappings)
-
 
     # Rename columns
     df.rename(columns={
@@ -128,6 +130,6 @@ def dms_report_with_offset():
     
     # Mark rows to be deleted based on offsetlist
     df['to_be_del'] = np.where(df.index.isin(offsetlist), "Delete?", "")
-    
+    df['發票日期'] = df['發票日期'].dt.strftime('%Y-%m-%d')
+    # return df
     return df.drop(columns=["index"])  # Drop index column if needed
-
