@@ -4,6 +4,12 @@
 __pycache__/
 *.py[cod]
 
+Include/
+Lib/
+Scripts/
+share/
+.vscode/
+
 # C extensions
 *.so
 
