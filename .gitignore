@@ -5,10 +5,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 bin/
-include/
+Include/
 Lib/
 Scripts/
-
+pyvenv.cfg
+.vscode
+share/
 
 # C extensions
 *.so
