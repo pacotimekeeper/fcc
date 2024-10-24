@@ -1,21 +1,21 @@
-from settings import SHARED_RESOURCE_FOLDER, iCLOUD_REPORTING_PATH 
+from settings import FCC_SHARED_FOLDER, iCLOUD_DRIVE, PARA_FOLDERS
 
 from shutil import copy as cp
 import os
 from os.path import join as joinpath
 import pandas as pd
 import numpy as np
-
+import re
 def dms_report():
-    SUPPORTING_FILES_PATH = os.path.join(iCLOUD_REPORTING_PATH, 'Medtronic DMS Report', 'supporting_files')
+    SUPPORTING_FILES_PATH = os.path.join(iCLOUD_DRIVE, PARA_FOLDERS[2], '__FCC__Reportings', 'Medtronic DMS Report', 'supporting_files')
     
     mapping_file = joinpath(SUPPORTING_FILES_PATH, 'cwl_mappings.xlsx')
 
-    ## copy mapping file (Shared G drive) 3 Resources 📚 to 
-    src_file = joinpath(SHARED_RESOURCE_FOLDER, 'mappings', 'cwl_mappings(master).xlsx')
-    cp(src_file, mapping_file)
-
-    sales_report_file = [os.path.join(SUPPORTING_FILES_PATH, fname) for fname in os.listdir(SUPPORTING_FILES_PATH) if 'sales report' in fname.lower()][0]
+    # ## copy mapping file (Shared G drive) 3 Resources 📚 to 
+    # src_file = joinpath(FCC_SHARED_FOLDER, 'mappings', 'cwl_mappings(master).xlsx')
+    # cp(src_file, mapping_file)
+    pattern = re.compile('sales report', re.IGNORECASE)
+    sales_report_file = [os.path.join(SUPPORTING_FILES_PATH, fname) for fname in os.listdir(SUPPORTING_FILES_PATH) if pattern.search(fname)][0]
     df = pd.read_excel(sales_report_file)
     mappings = pd.read_excel(mapping_file)
 
